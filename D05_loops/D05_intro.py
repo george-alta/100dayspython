@@ -9,20 +9,15 @@ numbers="1234567890"
 symbols="!@#$%^&*()?><"
 
 password = ""
-i = 0
-while i < n_letters:
+
+for char in range (1, n_letters + 1):
     password = password + letters[random.randint(0,len(letters)-1)]
-    i +=1
 
-i = 0
-while i < n_symbols:
+for char in range (1, n_symbols + 1):
     password = password + symbols[random.randint(0,len(symbols)-1)]
-    i +=1
 
-i = 0
-while i < n_numbers:
+for char in range (1, n_numbers + 1):
     password = password + numbers[random.randint(0,len(numbers)-1)]
-    i +=1
 
 print(f"Original string: {password}")
 
