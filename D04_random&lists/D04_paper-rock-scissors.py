@@ -5,6 +5,7 @@ score_cpu = 0
 play_again = True
 # 1 rock - 2 paper - 3 scissors
 
+
 while play_again:
     player = int(input("Select: \n1 - Rock\n2 - paper\n3 - Scissors\n1,2,3: "))
     cpu = random.randint(1, 3)
