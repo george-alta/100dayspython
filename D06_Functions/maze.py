@@ -22,6 +22,7 @@ def turn_right():
 while not at_goal():
     if front_is_clear():
         move()
+        # to prevent infinite square loops, after moving we check if the right path is clear, so we can prepare the next move avoiding a turn right loop
         if right_is_clear():
             turn_right()        
     elif right_is_clear():
