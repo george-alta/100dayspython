@@ -1,0 +1,34 @@
+from art import logo
+
+
+
+print (logo)
+
+def sum (a, b):
+    return a+b
+
+def substract (a, b):
+    return a-b
+
+def multiply (a, b):
+    return a*b
+
+def divide (a, b):
+    if b == 0: return "ERROR: cannot divide by zero"
+    return a/b
+
+operations = {
+    "+":sum,
+    "-":substract,
+    "/":divide,
+    "*":multiply}
+
+
+num1 = int(input("enter first number: "))
+num2 = int(input("enter second number: "))
+for symbol in operations:
+    print(symbol)
+operation_symbol = input("enter a symbol from the line above: ")
+calculation_function = operations[operation_symbol]
+result = calculation_function(num1,num2)
+print(f"{num1} {operation_symbol} {num2} = {result}")
