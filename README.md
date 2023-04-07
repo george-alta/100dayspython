@@ -4,6 +4,8 @@ https://www.udemy.com/course/100-days-of-code
 
 ![logo](course.jpg)
 
+# Completed so far
+
 + Day 01 = Inputs
 + Day 02 = Data-types
 + Day 03 = If
@@ -14,3 +16,5 @@ https://www.udemy.com/course/100-days-of-code
 + Day 08 = Functions - Inputs
 + Day 09 = Dictionaries
 + Day 10 = Functions - Outputs
++ Day 11 = Project: Blackjack app 
++ Day 12 = Global and local variable Scope. Project: number guesser
