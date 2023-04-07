@@ -1,0 +1,84 @@
+from art import logo
+import random
+import os
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+scores = [0,0]
+def drawcard():
+    return random.choice(cards)
+
+def computer_play(hand):
+    while sum(hand) < 17: hand.append(drawcard())
+    return hand
+
+def ace_in_hand(hand):
+    return any(card == 11 for card in hand)
+
+def replace_ace(hand):
+    index = hand.index(11)
+    hand[index] = 1
+    return hand
+
+def compare_scores(player,cpu):
+    if player == cpu:
+         print(f"It's a draw at {cpu} points") 
+         return("draw")
+    elif cpu > 21 or player > cpu: 
+         print("player wins! 😄")
+         return("win")
+
+    else: 
+         print("player loses! 😭")
+         return("lose")
+
+def computer_play(cards):
+     while sum(cards) < 17:
+          cards.append(drawcard())
+     return cards
+
+def play(scores):
+    os.system("cls")
+    print(logo)
+    print(f"                                   Scores: player = {scores[0]}  CPU = {scores[1]}")
+    player_hand = [drawcard(),drawcard()]
+    computer_hand = [drawcard(),drawcard()]
+    print(f"Your Hand: {player_hand} --> {sum(player_hand)} pts.")
+    print(f"Computer Hand: [{computer_hand[0]}, _]\n")
+    if sum(player_hand) == 21: 
+        scores[0] += 1
+        print(f"{player_hand} BLACKJACK! You win\n")
+        return scores
+    elif sum(computer_hand) == 21:
+        scores[1] +=1
+        print(f"{computer_hand} BLACKJACK! you lose\n")
+        return scores
+    player_active = True
+    while player_active:
+        choice = input(f"Do you want to draw another card? y/n: ")
+        if choice == "n": player_active = False
+        elif choice == "y":
+            player_hand.append(drawcard())
+            if sum(player_hand)>21 and ace_in_hand(player_hand):
+                print("Your Ace is now a 1...")
+                replace_ace(player_hand)
+            elif sum(player_hand) > 21:
+                        scores[1] +=1
+                        print(f"\n\nYour new hand:{player_hand}. You went over 21! you lose\n")
+                        return scores
+            print(f"\n\nYour new hand:{player_hand} --> {sum(player_hand)} pts.")
+        
+    computer_hand = computer_play(computer_hand)
+    print(f"\n\nPlayer hand:{player_hand} - [{sum(player_hand)} points]\nComputer hand:{computer_hand} - [{sum(computer_hand)} points]")
+    result = compare_scores(sum(player_hand),sum(computer_hand))
+    if result == "win": scores[0]+=1
+    elif result == "lose": scores[1]+=1
+    return scores
+
+
+end_game = False
+while not end_game:
+    scores = play(scores)
+    print(f"\nCurrent scores: player = {scores[0]}  CPU = {scores[1]}\n ")
+    playagain = input("do you want to play again? y/n: ")
+    if playagain == "n": end_game = True
+
+print(f"\n\nEnd of the game. Final Score: Player={scores[0]} Computer={scores[1]}") 
