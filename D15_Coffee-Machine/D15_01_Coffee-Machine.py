@@ -38,19 +38,13 @@ def pay(cost):
     """when provided the cost of the breverage, collects coins. Returns True if paid """
     print(f"Please insert ${cost} in coins")
     paid = False
-    quarters = 0
-    dimes = 0
-    nickles = 0
-    cents = 0
     total = 0
     while not paid:
-        print(f"Paid so far: {total}")
-        quarters += int(input(f"how many quarters? (0.25): "))
-        dimes += int(input(f"how many dimes? (0.10): "))
-        nickles += int(input(f"how many nickles? (0.05): "))
-        cents += int(input(f"how many cents? (0.01): "))
-        total = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + cents * 0.01
-        # print(total)
+        print(f"Paid so far: {round(total,2)}")
+        total += int(input(f"how many quarters? (0.25): "))*0.25
+        total += int(input(f"how many dimes? (0.10): "))*0.1
+        total += int(input(f"how many nickles? (0.05): "))*0.05
+        total += int(input(f"how many cents? (0.01): "))*0.01
         if total < cost:
             print(f"not enough coins. you need additional ${round(cost-total,2)}")
         elif total > cost:
@@ -61,11 +55,14 @@ def pay(cost):
             paid = True
     return paid
 
-def check_resources(required):
+def check_resources(choice):
+    """input is the coffee of choice, 
+    and it will return if ther are enough ingredients to make it"""
     global resources
-    if (required[0]>resources["water"]) or (required[1]>resources["milk"]) or (required[2]>resources["coffee"]):
-        print("not enough resources")
-        return False
+    for item in MENU[choice]["ingredients"]:
+        if (MENU[choice]["ingredients"][item]>resources[item]):
+            print(f"Sorry. There is not enough {item}")
+            return False
     else: return True
 
 def report():
@@ -83,24 +80,18 @@ def coffee():
     elif choice == "off": return False
     else:
         cost = MENU[choice]["cost"]
-        if not check_resources([MENU[choice]["ingredients"]["water"],MENU[choice]["ingredients"]["milk"],MENU[choice]["ingredients"]["coffee"]]):
+        if not check_resources(choice):
             return(f"not enough resources")
         if pay(cost):
             #make coffee
-            print(f"Making your coffee now.\nenjoy your ☕☕☕☕☕ {choice.upper()} 😄😄😄")
+            print(f"Making your coffee now....\n      ☕☕☕Here is your {choice.upper()}☕☕☕ Enjoy!  😄😄😄")
             resources["money"] += cost
-            resources["coffee"] -= MENU[choice]["ingredients"]["coffee"]
-            resources["milk"] -= MENU[choice]["ingredients"]["milk"]
-            resources["water"] -= MENU[choice]["ingredients"]["water"]
+            for item in MENU[choice]["ingredients"]:
+                resources[item] -= MENU[choice]["ingredients"][item]
     return True
 
 
-#check resources sufficient
-#process coins. how many of each. process change
-#check successful transaction
-#make coffee and deduct resources
-#turn off the machine if answer is off
 machineon= True
 while machineon:
-    machineon: coffee()
+    machineon= coffee()
 print("Machine now off")
