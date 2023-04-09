@@ -18,3 +18,7 @@ https://www.udemy.com/course/100-days-of-code
 + Day 10 = Functions - Outputs
 + Day 11 = Project: Blackjack app 
 + Day 12 = Global and local variable Scope. Project: number guesser
++ Day 13 = Debug
++ Day 14 = Project: Higher lower 
++ Day 15 = Project: Coffee Machine
++ Day 16 = OOP intro
