@@ -8,9 +8,9 @@ https://www.udemy.com/course/100-days-of-code
 
 + Day 01 = Inputs
 + Day 02 = Data-types
-+ Day 03 = If
++ Day 03 = If statements
 + Day 04 = Random numbers & lists
-+ Day 05 = Loops
++ Day 05 = Loops: For & While
 + Day 06 = Functions
 + Day 07 = Project: Hangman app
 + Day 08 = Functions - Inputs
@@ -21,4 +21,4 @@ https://www.udemy.com/course/100-days-of-code
 + Day 13 = Debug
 + Day 14 = Project: Higher lower 
 + Day 15 = Project: Coffee Machine
-+ Day 16 = OOP intro
++ Day 16 = OOP intro + Coffee Machine variation using OOP
