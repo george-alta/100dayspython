@@ -9,10 +9,10 @@ money_machine = MoneyMachine()
 
 
 def coffee():
-    print("welcome to coffee machine")
+    print("\nWelcome to coffee machine")
 
     while True:
-        choice = input(f"Select one of our options {menu.get_items()}")
+        choice = input(f"Select one of our options {menu.get_items()}: ")
         if choice == "report":
             coffee_maker.report()
             money_machine.report()
