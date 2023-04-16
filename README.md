@@ -25,4 +25,6 @@ https://www.udemy.com/course/100-days-of-code
 + Day 17 = Classes
 + Day 18 = Using Python turtle and tuples 
 + Day 19 = Using Events in turtle
-+ Day 20 = Creating a Snake game (day 1/2)
++ Day 20 = Creating the Snake game (day 1/2)
++ Day 21 = Creating the Snake game (day 2/2)
++ Day 22 = Creating the Pong game
