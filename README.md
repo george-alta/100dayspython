@@ -22,3 +22,7 @@ https://www.udemy.com/course/100-days-of-code
 + Day 14 = Project: Higher lower 
 + Day 15 = Project: Coffee Machine
 + Day 16 = OOP intro + Coffee Machine variation using OOP
++ Day 17 = Classes
++ Day 18 = Using Python turtle and tuples 
++ Day 19 = Using Events in turtle
++ Day 20 = Creating a Snake game (day 1/2)
