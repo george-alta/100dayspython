@@ -1,6 +1,6 @@
 from turtle import Turtle
 ALIGNMENT = "center"
-FONT = ("Courier", 24, "normal")
+FONT = ("Courier", 20, "normal")
 
 
 class Scoreboard(Turtle):
@@ -10,7 +10,9 @@ class Scoreboard(Turtle):
         self.score = 0
         self.color("white")
         self.penup()
-        self.highscore = 0
+        with open("D24_File-IO/hiscore.txt") as data:
+            self.highscore = int(data.read())
+        print(self.highscore)
         self.goto(0, 270)
         self.hideturtle()
         self.update_scoreboard()
@@ -23,6 +25,8 @@ class Scoreboard(Turtle):
     def reset(self):
         if self.score > self.highscore:
             self.highscore = self.score
+            with open("D24_File-IO/hiscore.txt", mode="w") as data:
+                data.write(f"{self.highscore}")
         self.score = 0
         self.update_scoreboard()
 
