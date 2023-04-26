@@ -25,6 +25,12 @@ https://www.udemy.com/course/100-days-of-code
 + Day 17 = Classes
 + Day 18 = Using Python turtle and tuples 
 + Day 19 = Using Events in turtle
-+ Day 20 = Creating the Snake game (day 1/2)
-+ Day 21 = Creating the Snake game (day 2/2)
-+ Day 22 = Creating the Pong game
++ Day 20 = Creating the Snake game clone (day 1/2)
++ Day 21 = Creating the Snake game clone (day 2/2)
++ Day 22 = Creating the Pong game clone
++ Day 23 = Creating the a Frogger game clone 
++ Day 24 = File Input / Output using Python
++ Day 25 = Using CSV files with Pandas
++ Day 26 = Using Lists and Dictionaries
++ Day 27 = Creating a GUI with Tkinter
+
