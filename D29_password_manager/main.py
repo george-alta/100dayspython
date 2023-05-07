@@ -10,13 +10,21 @@ def generate_password():
     numbers = ["1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 0"]
     symbols = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "?", ">", "<"]
 
-    password_letters = [random.choice(letters) for item in range(random.randint(8, 10))]
-    password_numbers = [random.choice(numbers) for item in range(random.randint(2, 4))]
-    password_symbols = [random.choice(symbols) for item in range(random.randint(2, 4)]
+    # list comprehension
 
+    password_letters = [random.choice(letters)
+                        for item in range(random.randint(8, 10))]
+    password_numbers = [random.choice(numbers)
+                        for item in range(random.randint(2, 4))]
+    password_symbols = [random.choice(symbols)
+                        for item in range(random.randint(2, 4))]
+
+    # appending the 3 lists and shuffle
     password_list = password_letters + password_numbers + password_symbols
     random.shuffle(password_list)
-    
+
+    # join as a string, update the interface and copy to clipboard
+
     password = ''.join(password_list)
     input_password.delete(0, 100)
     input_password.insert(0, password)
@@ -73,7 +81,7 @@ input_website.grid(column=1, row=1, columnspan=2)
 input_website.focus()  # to put the cursor in this space
 
 input_email = Entry(width=55)
-input_email.insert(0, "george.alta.nz@gmail.com")
+input_email.insert(0, "myemail@gmail.com")
 input_email.grid(column=1, row=2, columnspan=2)
 
 input_password = Entry(width=32)
