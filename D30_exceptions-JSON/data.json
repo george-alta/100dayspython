@@ -22,5 +22,9 @@
     "google": {
         "email": "myemail@gmail.com",
         "password": "mipass"
+    },
+    "hotmail": {
+        "email": "myemail@gmail.com",
+        "password": "holatu"
     }
 }
