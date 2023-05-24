@@ -2,9 +2,9 @@ import random
 import datetime as dt
 import pandas
 import smtplib
+from config import my_email, password
 
-my_email = "h100dayspythontestingnow@hotmail.com"
-password = "fttmldXXXXXXXXXXXXck"  # get info from google keep
+
 ##################### Extra Hard Starting Project ######################
 LETTERFILES = {1: "D32_SMTP-Birthday-Reminder/Birthday-wisher/letter_templates/letter_1.txt",
                2: "D32_SMTP-Birthday-Reminder/Birthday-wisher/letter_templates/letter_2.txt",
@@ -27,7 +27,7 @@ birthdays_dict = {(datarow["month"], datarow["day"]): datarow
 # 2. Check if today matches a birthday in the birthdays.csv
 if today in birthdays_dict:
     birthday_person = birthdays_dict[today]
-    # 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual name from birthdays.csv
+# 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual name from birthdays.csv
     letter_to_use = LETTERFILES[random.randint(1, 3)]
     print(letter_to_use)
 # 4. Send the letter generated in step 3 to that person's email address.

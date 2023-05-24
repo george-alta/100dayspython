@@ -2,10 +2,7 @@ import smtplib
 import datetime as dt
 import csv
 import random
-
-my_email = "h100dayspythontestingnow@hotmail.com"
-password = "fttmldXXXXXXXXXXXXck"
-
+from config import my_email, password
 
 now = dt.datetime.now()  # current day and time
 day_of_week = now.weekday()
