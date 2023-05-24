@@ -12,7 +12,7 @@ class QuizInterface:
         self.quiz = quiz_brain
         self.window = Tk()
         self.window.title("Trivia App")
-        self.window.config(padx=20, pady=20, bg=THEME_COLOR)
+        self.window.config(padx=20, pady=20, bg=THEME_COLOR, width=500)
 
         self.score_label = Label(text=f"Score: {score}/{total_runs}",
                                  font=(
@@ -22,22 +22,22 @@ class QuizInterface:
                                  background=THEME_COLOR,
                                  foreground="white"
                                  )
-        self.score_label.grid(column=1, row=0, padx=20, pady=20)
+        self.score_label.grid(column=1, row=0, padx=20, pady=20, sticky="e")
 
         self.canvas = Canvas(
-            width=300, height=250,
+            width=460, height=250,
             bg="white",
             highlightthickness=0
         )
         self.canvas.grid(
             row=2, column=0, columnspan=2, padx=20, pady=20)
         self.question_text = self.canvas.create_text(
-            150,
+            230,
             125,
-            width=280,
+            width=440,
             text="this is a question",
             fill=THEME_COLOR,
-            font=("arial", 15, "italic")
+            font=("arial", 20, "italic")
         )
 
         self.true_img = PhotoImage(
@@ -74,7 +74,6 @@ class QuizInterface:
         if self.quiz.check_answer(True):
             score += 1
             self.feedback(True)
-            # print(f"Score {score}/{total_runs}")
         else:
             self.feedback(False)
 
@@ -84,7 +83,6 @@ class QuizInterface:
         if self.quiz.check_answer(False):
             score += 1
             self.feedback(True)
-            print(f"Score {score}/{total_runs}")
         else:
             self.feedback(False)
 
@@ -97,7 +95,7 @@ class QuizInterface:
         else:
             self.score_label.config(text=f"Final Score: {score}/{total_runs}")
             self.canvas.itemconfig(
-                self.question_text, text=f"End of the quiz \n {round(score*100/total_runs)}%")
+                self.question_text, text=f"End of the quiz: {round(score*100/total_runs)}%")
             self.true_button.config(state="disabled")
             self.false_button.config(state="disabled")
 

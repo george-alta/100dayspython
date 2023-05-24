@@ -1,11 +1,4 @@
-class Question:
-    def __init__(self, text, answer):
-        self.text = text
-        self.answer = answer
-
-
-# new_q = Question("textee", "False")
-
-# print(new_q.text)
-
-# create a question bank
+# class Question:
+#     def __init__(self, text, answer):
+#         self.text = text
+#         self.answer = answer

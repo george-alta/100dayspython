@@ -12,8 +12,8 @@ class QuizBrain:
         #
         self.current_question = self.question_list[self.question_number]["question"]
         self.question_number += 1
-        qtext = unescape(self.current_question)
-        return qtext
+        q_text = unescape(self.current_question)
+        return f"Q.{self.question_number}: {q_text}"
 
     def check_answer(self, user_answer):
         this_question_is = str(
@@ -22,12 +22,10 @@ class QuizBrain:
             self.test = True
         else:
             self.test = False
-        self.correct_answer = bool(
-            self.question_list[self.question_number]["correct_answer"])
         if user_answer == self.test:
             return True
         else:
             return False
 
     def still_has_questions(self):
-        return self.question_number < QUESTIONS-1  # len(self.question_list)
+        return self.question_number < QUESTIONS  # len(self.question_list)
