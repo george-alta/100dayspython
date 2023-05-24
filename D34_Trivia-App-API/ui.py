@@ -1,9 +1,11 @@
 from tkinter import Label, Tk, Button, PhotoImage, Canvas
 from quiz_brain import QuizBrain
+import math
 
 THEME_COLOR = "#375362"
 
 score = 0
+total_runs = 0
 
 
 class QuizInterface:
@@ -13,11 +15,9 @@ class QuizInterface:
         self.window.title("Trivia App")
         self.window.config(padx=20, pady=20, bg=THEME_COLOR)
 
-        self.score = 0
-
         # UI setup
 
-        self.score_label = Label(text=f"Score: {score}",
+        self.score_label = Label(text=f"Score: {score}/{total_runs}",
                                  font=(
                                      "Arial",
                                      15,
@@ -50,7 +50,7 @@ class QuizInterface:
             highlightthickness=0,
             bd=0,
             relief="flat",
-            command=self.get_next_question,
+            command=self.button_true,
             background=THEME_COLOR
         )
         self.true_button.grid(row=3, column=0, padx=60, pady=20)
@@ -62,7 +62,7 @@ class QuizInterface:
             highlightthickness=0,
             bd=0,
             relief="flat",
-            command=self.get_next_question,
+            command=self.button_false,
             background=THEME_COLOR
         )
         self.false_button.grid(row=3, column=1, padx=60, pady=20)
@@ -71,11 +71,45 @@ class QuizInterface:
 
         self.window.mainloop()
 
-    def get_quote(self):
-        pass
+    def button_true(self):
+        global score, total_runs
+        total_runs += 1
+        if self.quiz.check_answer(True):
+            score += 1
+            self.feedback(True)
+            print(f"Score {score}/{total_runs}")
+        else:
+            self.feedback(False)
+
+    def button_false(self):
+        global score, total_runs
+        total_runs += 1
+        if self.quiz.check_answer(False):
+            score += 1
+            self.feedback(True)
+            print(f"Score {score}/{total_runs}")
+        else:
+            self.feedback(False)
 
     def get_next_question(self):
-        qtext = self.quiz.next_question()
-        self.canvas.itemconfig(self.question_text, text=qtext)
+        self.canvas.config(bg="white")
+        if self.quiz.still_has_questions():
+            qtext = self.quiz.next_question()
+            self.canvas.itemconfig(self.question_text, text=qtext)
+            self.score_label.config(text=f"Score: {score}/{total_runs}")
+        else:
+            self.score_label.config(text=f"Final Score: {score}/{total_runs}")
+            self.canvas.itemconfig(
+                self.question_text, text=f"End of the quiz \n {round(score*100/total_runs)}%")
+            self.true_button.config(state="disabled")
+            self.false_button.config(state="disabled")
+
+    def feedback(self, win):
+        if win:
+            self.canvas.config(bg="green")
+        else:
+            self.canvas.config(bg="red")
+        self.window.after(1000, self.get_next_question)
+
 
 # UI setup
