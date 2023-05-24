@@ -1,6 +1,5 @@
 from tkinter import Label, Tk, Button, PhotoImage, Canvas
 from quiz_brain import QuizBrain
-import math
 
 THEME_COLOR = "#375362"
 
@@ -14,8 +13,6 @@ class QuizInterface:
         self.window = Tk()
         self.window.title("Trivia App")
         self.window.config(padx=20, pady=20, bg=THEME_COLOR)
-
-        # UI setup
 
         self.score_label = Label(text=f"Score: {score}/{total_runs}",
                                  font=(
@@ -77,7 +74,7 @@ class QuizInterface:
         if self.quiz.check_answer(True):
             score += 1
             self.feedback(True)
-            print(f"Score {score}/{total_runs}")
+            # print(f"Score {score}/{total_runs}")
         else:
             self.feedback(False)
 
