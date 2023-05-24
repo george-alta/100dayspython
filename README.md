@@ -33,4 +33,12 @@ https://www.udemy.com/course/100-days-of-code
 + Day 25 = Using CSV files with Pandas
 + Day 26 = Using Lists and Dictionaries
 + Day 27 = Creating a GUI with Tkinter
++ Day 28 = Creating a Pomodoro Timer app with Tkinter
++ Day 29 = Creating a Password manager app using Json and Tkinter
++ Day 30 = Creating a Improve the Password manager using exception management
++ Day 31 = Creating a Flashcard app with Tkinter
++ Day 32 = Creating a Birthday reminder email app using SMTP
++ Day 33 = Creating an API connected weather app
++ Day 34 = Creating an API connected trivia app
++ Day 35 = Send SMS using APIs and connected services
 
