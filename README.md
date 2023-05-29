@@ -40,5 +40,4 @@ https://www.udemy.com/course/100-days-of-code
 + Day 32 = Creating a Birthday reminder email app using SMTP
 + Day 33 = Creating an API connected weather app
 + Day 34 = Creating an API connected trivia app
-+ Day 35 = Send SMS using APIs and connected services
-
++ Day 35 = Create a Rain Alert App using SMS and APIs 
