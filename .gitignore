@@ -1,4 +1,2 @@
-D35_API-Auth-SMS/config.py
-D32_SMTP-Birthday-Reminder/config.py
-D32_SMTP-Birthday-Reminder/Birthday-wisher/config.py
 D35_API-Auth-SMS/mimir.py
+**/config.py
