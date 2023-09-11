@@ -1,7 +1,10 @@
 from config import ALPHA_VANTAGE_KEY
+from news import getnews
+from messages import send_message
 import requests
 import datetime
 import math
+
 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
@@ -22,30 +25,37 @@ data1 = response.json()
 last_refresh = response.json()["Meta Data"]["3. Last Refreshed"]
 converted_datetime = datetime.datetime.strptime(
     last_refresh, "%Y-%m-%d %H:%M:%S")
-yesterday_datetime = converted_datetime - datetime.timedelta(days=1)
+yesterday_datetime = converted_datetime - datetime.timedelta(days=5)
 yesterday_refresh = yesterday_datetime.strftime("%Y-%m-%d %H:%M:%S")
 
-last_close_price = float(response.json(
-)["Time Series (60min)"][last_refresh]["4. close"])
-yesterday_close_price = float(response.json(
-)["Time Series (60min)"][yesterday_refresh]["4. close"])
+last_close_price = float(response.json()["Time Series (60min)"][last_refresh]["4. close"])
+yesterday_close_price = float(response.json()["Time Series (60min)"][yesterday_refresh]["4. close"])
 
-print(
-    f"today price is {last_close_price} at {last_refresh}.\n Yesterday was {yesterday_close_price} at {yesterday_refresh}")
+message = f"🚗 TESLA 🚗 stock checker\ntoday price is ${last_close_price} at {last_refresh}.\nYesterday was {yesterday_close_price} at {yesterday_refresh}"
+print(message)
+send_message(message)
 
-# TODO use
+
 difference = math.fabs(yesterday_close_price-last_close_price)
 percentage_variation = round(difference / yesterday_close_price, 3)
-if percentage_variation > 0.03:
-    print(
-        f"the change was {percentage_variation*100}%. This is big enough...we will check the news to see whats happening")
+if percentage_variation > 0:
+    variation_icon = '🔺'
+else:
+    variation_icon = '🔻'
+    
+if percentage_variation > 0.005:
+    message =  f"the change was {variation_icon} {percentage_variation*100}%.\nLet's check the news...\n"
+    print(message)
+    send_message(message)
 
 # STEP 2: Use https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME.
 
+    getnews()
+
 # STEP 3: Use https://www.twilio.com
 # Send a seperate message with the percentage change and each article's title and description to your phone number.
-
+## instead of twilio I am using telegram API
 
 # Optional: Format the SMS message like this:
 """
